@@ -1,0 +1,91 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>index page</h1>
+    <h2>Hello {{ data }}</h2>
+    {% for i in data %}
+    <div class="user_pod">
+        {{ i.deviceName }}
+    </div>
+{% endfor %}
+</body>
+</html> -->
+
+<html lang="en">
+<head>
+  <title></title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Management data</a>
+    </div>
+    <ul class="nav navbar-nav">
+    </ul>
+  </div>
+</nav>
+
+<div class="container-fluid">
+    {% with  data  as value %} 
+    <!-- <button onclick="change(value)">Export</button> -->
+    <!-- {{ value }} -->
+    <!-- <input class="btn btn-success" type="button" value="New Line" onclick="location.href='{% url 'hai'%}'"  /> -->
+    {% endwith %} 
+    
+   
+	<table class="table table-bordered table-hover table-striped">
+            <thead>
+            <tr>
+                
+                <th style="text-align: center;">Device Name</th>
+                <th style="text-align: center;">Enrolled Date and Time</th>
+                <th style="text-align: center;">User Principal Name</th>
+                <th style="text-align: center;">User Display Name</th>
+                
+                
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in data %}
+            <tr>
+                <td style="text-align: center;">{{ i.deviceName }}</td>
+                <td style="text-align: center;">{{ i.enrolledDateTime }}</td>
+                <td style="text-align: center;">{{ i.userPrincipalName }}</td>
+                <td style="text-align: center;">{{ i.userDisplayName }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+            
+
+			
+		
+	</table>
+
+</div>
+<script type="text/javascript" language="javascript">
+    function change(data){
+    $.ajax({
+    url: 'hai',
+    datas : {
+        'data': data
+    },
+    success: function (data) {
+        $("#idImg").html(data);
+    }
+    });
+    }
+</script>
+</body>
+
+</html>
